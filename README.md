@@ -9,7 +9,7 @@
 
 This script will work on Debian, Ubuntu and probably other distros
 of the same families, although no support is offered for them. It isn't
-bulletproof but it will probably work if you simply want to setup a IPTMan on
+bulletproof but it will probably work if you simply want to setup a IPTMenu on
 your Debian/Ubuntu box. It has been designed to be as unobtrusive and
 universal as possible.
 
@@ -26,15 +26,15 @@ Thanks! :heart:
 [![Ubuntu](https://raw.githubusercontent.com/slaserx/icons/master/64x64/ubuntu.png)](https://www.ubuntu.com)
 
 ```sh
-git clone https://github.com/SlaSerX/IPTMan
+git clone https://github.com/SlaSerX/IPTMenu
 
-cd IPTMan/
+cd IPTMenu/
 
 sudo chmod +x install
 
 sudo ./install
 
-after install just type "sudo iptman"
+after install just type "sudo iptmenu"
 
 ```
 
