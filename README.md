@@ -1,8 +1,6 @@
 # IPTMenu
 # IPTABLES Graphical Linux Menu
 
-[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=slaserx@itbox.bg&item_name=LinuxHelps%20Support&currency_code=EUR)
-
 [![N|Solid](http://i68.tinypic.com/a1ohky.png)](https://linuxhelps.net)
 
 <b>GUI for IPTABLES</b>
