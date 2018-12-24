@@ -1,0 +1,61 @@
+#!/usr/bin/pdmenu -c
+# Copyright Ivan Bachvarov - SlaSerX
+# Released under GPL V3
+
+
+
+# Seting up color scheme.
+color:desktop:white:brightblue
+color:title:red:red
+color:base:white:red
+color:shadow:black:black
+color:menu:black:brightcyan
+color:selbar:white:black
+color:menuhot:yellow
+color:unselmenu:gray:white
+preproc: if [ -f /tmp/picuntu.debug ]; then /usr/bin/logger "IPTMenu: PDMENU initialised in debug mode."; fi
+
+# ************* Network menu
+menu:network_conf:IPTMenu Admin Panel:IPTMenu Admin Panel: Configure your Server.
+        show:Network Tools::
+        nop:--------------------------------------
+		exec:   Show internet _status:display:((ping -w5 -c3 4.2.2.2 || ping -w5 -c3 google.com) > /dev/null 2>&1) && echo \*\*\* Congratulations - Internet access is up. \*\*\*; touch /tmp/picuntu.net.is.up || (echo \*\*\* Ooopsie !! Internet access is down. \;\( \*\*\*; rm -f /tmp/picuntu.net.is.up && exit 1)
+        exec:   Show _IP Address and Subnet:display:/sbin/ifconfig
+        exec:   Show _Routes:display:/sbin/route -n
+                exec:   _Check Open Ports:display:netstat -atup
+		exec:   _Ping:edit,pause,display:ping -c5 ~Address:~ 
+		exec:   _Traceroute:edit,display:traceroute ~Enter address to traceroute:~
+		exec:   N_etstat:display:netstat -tuna		
+        nop
+
+# ***************** Firewall
+
+        nop:Firewall
+        nop:--------------------------------------
+		exec: Show Fir_ewall Rules:display:iptables -L; date=`/bin/date +'%d.%m.%G %H:%M:%S'`; echo "${date} | `/usr/bin/whoami` ${whoami} | Show Firewall Rules" >> /var/log/pdmenu.log
+		exec: Show _Mangle Rules:display:/sbin/iptables -t mangle -L -n -v
+		exec: Show NAT Rul_es:display:iptables -t nat --line-numbers -L; date=`/bin/date +'%d.%m.%G %H:%M:%S'`; echo "${date} | `/usr/bin/whoami` ${whoami} | Show NAT Rules" >> /var/log/pdmenu.log
+		exec: Add TCP P_ort Forwarding:edit,pause:clear;iptables -t nat -A PREROUTING -i eth0.3000 -p tcp --dport ~Enter Port:~ -j DNAT --to-destination ~Enter IP Address:~
+                exec: Add UDP P_ort Forwarding:edit,pause:clear;iptables -t nat -A PREROUTING -i eth0.3000 -p udp --dport ~Enter Port:~ -j DNAT --to-destination ~Enter IP Address:~
+		exec: Del P_ort Forwarding:edit,pause:clear;iptables -t nat -D PREROUTING ~Number of Rules:~
+		exec: Flu_sh All chains:display:iptables -F && echo /*/*/*/All Iptables rules Deleted/*/*/*/
+                nop:
+
+                nop:Logs
+        nop:--------------------------------------
+                exec: Show Last logge_d users:display:last
+                exec: Show sys_log:display:cat /var/log/syslog
+		exec: Show Brute For_ce Logs:display:grep Failed /var/log/auth.log; date=`/bin/date +'%d.%m.%G %H:%M:%S'`; echo "${date} | `/usr/bin/whoami` ${whoami} | Show BruteForce log" >> /var/log/pdmenu.log
+                nop:
+
+		nop:Main
+	nop:--------------------------------------
+	        exec:   V_ersion:display:cat ./docs/version
+                exec:   Lic_ense:display:cat ./docs/license
+                exec:   Re_load this menu::pkill -28 pdmenu
+                exec:   E_xit to main menu::pdmenu /usr/local/picuntu/pdmenu.main -c
+
+        exit:_Quit
+
+
+

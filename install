@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# IPTMenu warrior installer for Debian, Ubuntu
+
+# This script will work on Debian, Ubuntu and probably other distros
+# of the same families, although no support is offered for them. It isn't
+# bulletproof but it will probably work if you simply want to setup a IPTMenu on
+# your Debian/Ubuntu box. It has been designed to be as unobtrusive and
+# universal as possible.
+
+# This is a free shell script under GNU GPL version 2.0 or above
+# Copyright (C) 2017 LinuxHelps project.
+# Feedback/comment/suggestions : https://linuxhelps.net/
+# Author Ivan Bachvarov a.k.a SlaSerX
+
+
+#Update and Upgrade
+echo "Updating and Upgrading"
+apt-get update && apt-get upgrade -y
+
+# Setting for the new UTF-8 terminal support in Lion
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+sudo apt-get install -y dialog wget curl traceroute pdmenu nano sl ccze lolcat aview
+
+#Image for FUN
+aview love.pgm
+#
+sudo mv iptmenu /usr/bin
+
