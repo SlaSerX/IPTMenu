@@ -19,6 +19,10 @@ Author Ivan Bachvarov a.k.a SlaSerX
 [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=slaserx@itbox.bg&item_name=LinuxHelps%20Support&currency_code=EUR) - You can make one-time donations via PayPal. I'll probably buy a coffe. :coffee:
 Thanks! :heart:
 
+#### Demo
+
+[![asciicast](https://asciinema.org/a/cyK72fCIBQUdyt1mupbjhsRUK.svg)](https://asciinema.org/a/cyK72fCIBQUdyt1mupbjhsRUK)
+
 ##### Runs on
 [![Debian](https://raw.githubusercontent.com/slaserx/icons/master/64x64/debian.png)](https://www.debian.org)
 [![Ubuntu](https://raw.githubusercontent.com/slaserx/icons/master/64x64/ubuntu.png)](https://www.ubuntu.com)
@@ -35,6 +39,7 @@ sudo ./install
 after install just type "sudo iptmenu"
 
 ```
+
 
 
 
